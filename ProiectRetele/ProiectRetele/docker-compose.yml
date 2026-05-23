@@ -1,0 +1,7 @@
+services:
+  avionase-server:
+    build: .
+    container_name: avionase-server
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
