@@ -68,7 +68,6 @@ class AvionaseServer:
     @staticmethod
     def _parse_config(path: Path) -> GameConfig:
         raw_lines = path.read_text(encoding="utf-8").splitlines()
-        # Permitem linii goale sau comentarii in fisier, ca README/configurile sa fie usor de citit.
         lines = [line.strip().replace(" ", "") for line in raw_lines if line.strip() and not line.strip().startswith("#")]
 
         if len(lines) != 10:
@@ -196,7 +195,6 @@ class AvionaseServer:
     def _valid_name(name: str) -> bool:
         if not name or len(name) > 32:
             return False
-        # Nume simplu, compatibil cu terminalul si logurile.
         return all(ch.isalnum() or ch in "_-" for ch in name)
 
     def _handle_shot(self, session: ClientSession, request: dict) -> None:
