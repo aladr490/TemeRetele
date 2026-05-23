@@ -11,7 +11,7 @@ from typing import Dict, List, Optional, Set, Tuple
 
 from protocol import ProtocolError, parse_json_line, send_json
 
-Coord = Tuple[int, int]  # coordonate interne 0-based
+Coord = Tuple[int, int] 
 
 
 @dataclass(frozen=True)
@@ -262,7 +262,6 @@ class AvionaseServer:
             else:
                 response[
                     "message"] = "Cap de avion lovit!" if counted else "Cap de avion deja doborat de tine anterior."
-            # Snapshot cu sesiunile curente, ca sa trimitem fara sa tinem lock-ul global.
             clients_snapshot = list(self.clients.values())
 
         session.send(response)
